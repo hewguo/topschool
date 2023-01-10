@@ -53,5 +53,5 @@ RESOURCES += \
 #cp_kk.path  += $$OUT_PWD
 #COPIES +=  cp_kk
 
-
-QMAKE_POST_LINK += cp -f $$PWD/gaokao.sqlite $${OUT_PWD}/$${TARGET}.app/Contents/MacOS
+mac:QMAKE_POST_LINK += cp -f $$PWD/gaokao.sqlite $${OUT_PWD}/$${TARGET}.app/Contents/MacOS
+win64:QMAKE_POST_LINK += cp -f $$PWD/gaokao.sqlite $${OUT_PWD}
