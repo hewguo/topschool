@@ -53,5 +53,13 @@ RESOURCES += \
 #cp_kk.path  += $$OUT_PWD
 #COPIES +=  cp_kk
 
+#QMAKE_APPLE_DEVICE_ARCHS = x86_64 arm64
+
 mac:QMAKE_POST_LINK += cp -f $$PWD/gaokao.sqlite $${OUT_PWD}/$${TARGET}.app/Contents/MacOS
-win64:QMAKE_POST_LINK += cp -f $$PWD/gaokao.sqlite $${OUT_PWD}
+SRC_FILE=$$PWD/gaokao.sqlite
+SRC_FILE=$$replace(SRC_FILE,/,\\)
+DST_FILE=$$OUT_PWD/release
+DST_FILE=$$replace(DST_FILE,/,\\)
+win32:QMAKE_POST_LINK += copy  $$SRC_FILE $$DST_FILE /y
+#win64:QMAKE_POST_LINK +=echo $$PWD
+# QMAKE_POST_LINK +=echo $$PWD;echo $${OUT_PWD}
